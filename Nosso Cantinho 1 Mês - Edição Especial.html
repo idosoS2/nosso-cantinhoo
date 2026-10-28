@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 Mês de Namoro - Para a Mulher da Minha Vida ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#09040a;color:#fff;font-family:'Montserrat',sans-serif;overflow-x:hidden;user-select:none;-webkit-user-select:none}
+
+/* Fundo Iluminado & Efeito de Profundidade */
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(231, 92, 134, 0.22), transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(148, 27, 72, 0.2), transparent 50%),
+    radial-gradient(circle at 15% 85%, rgba(98, 14, 52, 0.25), transparent 45%);
+  z-index:-2;
+}
+
+.noise{
+  position:fixed;inset:0;opacity:.03;pointer-events:none;z-index:20;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#canvas-particles, #canvas-confetti{position:fixed;inset:0;pointer-events:none}
+#canvas-particles{z-index:-1}
+#canvas-confetti{z-index:9999}
+
+/* Layout & Glassmorphism */
+section{padding:90px 20px;position:relative}
+.container{max-width:980px;margin:auto}
+
+.section-title{
+  text-align:center;font-family:"DM Serif Display",serif;
+  font-size:clamp(32px, 5.5vw, 50px);margin:0 0 10px;font-weight:400;
+  background:linear-gradient(135deg, #ffffff 30%, #ffb8d1 70%, #e75c86);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{
+  text-align:center;color:#c7b3be;line-height:1.7;
+  max-width:620px;margin:0 auto 50px;font-weight:300;font-size:15px;
+}
+
+.glass{
+  background:linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border:1px solid rgba(255, 255, 255, 0.12);
+  border-radius:28px;
+  backdrop-filter:blur(16px);
+  box-shadow:0 30px 80px rgba(0, 0, 0, 0.65);
+}
+
+/* Controls Flutuantes (Som + Áudio) */
+.floating-controls{
+  position:fixed;bottom:20px;right:20px;z-index:100;
+  display:flex;align-items:center;gap:10px;
+}
+.control-btn{
+  background:rgba(20, 9, 22, 0.88);border:1px solid rgba(255, 181, 203, 0.3);
+  color:#ff9ebd;padding:12px 18px;border-radius:50px;backdrop-filter:blur(15px);
+  cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);transition:all .3s ease;
+}
+.control-btn:hover{transform:scale(1.05);border-color:rgba(255,181,203,0.7);color:#fff}
+
+/* Hero Section */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px}
+.hero-inner{max-width:860px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 22px;border-radius:50px;
+  background:rgba(231, 92, 134, 0.18);border:1px solid rgba(255, 120, 160, 0.35);
+  color:#ff9ebd;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:25px;
+}
+h1{font-family:"DM Serif Display",serif;font-size:clamp(45px, 10vw, 100px);line-height:.95;margin:0 0 20px;font-weight:400}
+.cursive{font-family:'Alex Brush', cursive;font-size:1.3em;color:#ff8dae;display:block;margin-top:10px}
+.gradient-text{background:linear-gradient(110deg,#ffffff 10%,#ffc0d3 50%,#e75c86 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:580px;margin:0 auto;color:#d8c9d0;line-height:1.8;font-weight:300;font-size:16px}
+
+.btn-main{
+  display:inline-flex;align-items:center;gap:12px;margin-top:35px;padding:16px 36px;
+  border:1px solid rgba(255, 255, 255, 0.28);border-radius:100px;
+  background:linear-gradient(135deg, rgba(231, 92, 134, 0.45), rgba(255, 255, 255, 0.08));
+  color:#fff;text-decoration:none;transition:.4s ease;backdrop-filter:blur(10px);
+  font-weight:600;font-size:15px;box-shadow:0 10px 30px rgba(231, 92, 134, 0.3);
+  cursor:pointer;
+}
+.btn-main:hover{background:#ffffff;color:#130811;transform:translateY(-3px);box-shadow:0 15px 35px rgba(255, 181, 203, 0.4)}
+
+/* Contador */
+.counter-box{padding:50px 20px;text-align:center;position:relative;overflow:hidden}
+.counter-date{font-size:12px;letter-spacing:4px;color:#ff8dae;text-transform:uppercase;font-weight:600}
+.counter-number{font-family:"DM Serif Display";font-size:clamp(42px,10vw,85px);margin:12px 0;color:#fff}
+.counter-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;max-width:520px;margin:25px auto 0}
+.time-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:12px;border-radius:16px}
+.time-val{font-family:"DM Serif Display";font-size:26px;color:#ffb8d1}
+.time-lbl{font-size:10px;color:#9d8e96;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* Raspadinha de Amor */
+.scratch-container{
+  position:relative;width:100%;max-width:400px;height:240px;margin:0 auto;
+  border-radius:24px;overflow:hidden;border:2px solid rgba(255,181,203,0.3);
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+.scratch-secret{
+  position:absolute;inset:0;background:linear-gradient(135deg, #2b0b1a, #4a1228);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:20px;text-align:center;
+}
+.scratch-secret h4{font-family:"DM Serif Display";font-size:24px;color:#ffb8d1;margin:0 0 8px}
+.scratch-secret p{font-size:14px;color:#e3d4dc;margin:0;line-height:1.5}
+#scratchCanvas{position:absolute;inset:0;cursor:pointer;touch-action:none}
+
+/* Sorteador / Roleta de Encontros */
+.roulette-box{padding:40px 25px;text-align:center;max-width:600px;margin:auto}
+.roulette-card{
+  background:rgba(255,255,255,0.05);border:1px dashed rgba(255,181,203,0.4);
+  border-radius:20px;padding:30px 20px;margin:25px 0;min-height:120px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  font-family:"DM Serif Display";color:#ffc0d3;transition:all .3s ease;
+}
+
+/* Cards & Razões */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{padding:32px 24px;transition:.4s ease;position:relative}
+.card:hover{transform:translateY(-6px);border-color:rgba(255, 181, 203, 0.4)}
+.icon-box{
+  width:50px;height:50px;border-radius:16px;background:rgba(231, 92, 134, 0.15);
+  display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;
+  border:1px solid rgba(255, 120, 160, 0.25);
+}
+.card h3{margin:0 0 10px;font-size:18px;color:#fff}
+.card p{color:#b2a3ab;line-height:1.7;font-size:14px;margin:0;font-weight:300}
+
+/* Timeline */
+.timeline{position:relative;max-width:700px;margin:auto}
+.timeline:before{content:"";position:absolute;left:18px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg, #e75c86, rgba(255,255,255,0.08))}
+.event{position:relative;padding:0 0 45px 50px}
+.dot{
+  position:absolute;left:10px;top:4px;width:18px;height:18px;border-radius:50%;
+  background:#e75c86;border:4px solid #09040a;box-shadow:0 0 15px #e75c86;
+}
+.event small{color:#ff8dae;letter-spacing:2px;font-weight:600;font-size:11px}
+.event h3{font-family:"DM Serif Display";font-size:24px;margin:6px 0;color:#fff}
+.event p{color:#b2a3ab;line-height:1.6;margin:0;font-size:14px;font-weight:300}
+
+/* Polaroids 3D */
+.gallery-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
+.polaroid{
+  background:#140c16;border:1px solid rgba(255,255,255,0.1);padding:14px 14px 22px;
+  border-radius:18px;text-align:center;transition:0.4s ease;cursor:pointer;
+  transform-style:preserve-3d;perspective:1000px;
+}
+.polaroid:hover{transform:scale(1.03) rotate(1deg);border-color:rgba(255, 141, 174, 0.5);box-shadow:0 20px 40px rgba(0,0,0,0.7)}
+.polaroid-img{
+  width:100%;height:210px;border-radius:12px;object-fit:cover;
+  background:linear-gradient(135deg,#200d23,#3d1028);
+  display:flex;align-items:center;justify-content:center;color:#ff8dae;font-size:32px;
+  margin-bottom:14px;overflow:hidden;
+}
+.polaroid-img img{width:100%;height:100%;object-fit:cover}
+.polaroid-caption{font-size:13px;color:#d3c5cb;font-weight:500}
+
+/* Envelope Desdobrável */
+.envelope-box{max-width:600px;margin:0 auto;text-align:center}
+.envelope{
+  background:linear-gradient(135deg, #230d1d, #140712);
+  border:1px solid rgba(255,181,203,0.3);border-radius:24px;
+  padding:40px 20px;cursor:pointer;transition:0.4s ease;
+}
+.envelope:hover{border-color:rgba(255,181,203,0.6);transform:translateY(-4px)}
+.envelope-icon{font-size:60px;margin-bottom:12px;display:inline-block;transition:transform .3s}
+.envelope:hover .envelope-icon{transform:scale(1.1) rotate(-5deg)}
+.letter-content{
+  display:none;margin-top:25px;padding:40px 30px;text-align:center;
+  animation:slideUp .7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.letter-content p{max-width:580px;margin:16px auto;color:#e0d2d9;line-height:1.85;font-size:15px;font-weight:300}
+
+/* Configurações da Música Personalizada */
+.music-config-box{
+  margin-top:20px;padding:15px;background:rgba(255,255,255,0.03);
+  border-radius:16px;border:1px solid rgba(255,255,255,0.08);display:inline-block;
+}
+.music-config-box input{
+  background:rgba(0,0,0,0.4);border:1px solid rgba(255,181,203,0.3);
+  color:#fff;padding:8px 14px;border-radius:50px;font-size:12px;width:230px;outline:none;
+}
+
+footer{
+  text-align:center;padding:60px 20px 30px;color:#7c6d76;font-size:12px;
+  border-top:1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media(max-width:768px){
+  .cards, .gallery-grid{grid-template-columns:1fr}
+  section{padding:65px 16px}
+  .counter-grid{grid-template-columns:repeat(2, 1fr)}
+  .scratch-container{height:200px}
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<canvas id="canvas-particles"></canvas>
+<canvas id="canvas-confetti"></canvas>
+
+<!-- Elemento de Áudio Oculto (Musica de Fundo) -->
+<audio id="bgAudio" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-love-112188.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Botões de Controle de Som Flutuantes -->
+<div class="floating-controls">
+  <button class="control-btn" id="muteBtn" onclick="toggleMute()">
+    <span id="muteIcon">🔊</span> Som: ON
+  </button>
+  <button class="control-btn" id="musicBtn" onclick="toggleMusic()">
+    <span id="musicIcon">🎵</span> Música
+  </button>
+</div>
+
+<!-- Hero Section -->
+<header class="hero">
+ <div class="hero-inner">
+  <div class="badge">✨ Nosso 1º Mês de Namoro ✨</div>
+  <h1>Para a Mulher da<br><span class="gradient-text">Minha Vida ❤️</span> <span class="cursive">Minha Princesa Linda</span></h1>
+  <p>Há exatamente 1 mês eu dei o passo mais certo da minha vida. Criei esse cantinho cheio de surpresas e efeitos só para comemorar o nosso amor!</p>
+  <button class="btn-main" onclick="playChime(); location.href='#tempo'">Explorar Nosso Cantinho ↓</button>
+ </div>
+</header>
+
+<!-- Contador em Tempo Real -->
+<section id="tempo">
+ <div class="container">
+  <div class="glass counter-box">
+   <div class="counter-date">28 DE SETEMBRO — 28 DE OUTUBRO DE 2026</div>
+   <div class="counter-number">1 MÊS JUNTINHOS 🎉</div>
+   <div class="counter-grid">
+     <div class="time-card"><div class="time-val" id="dias">30</div><div class="time-lbl">Dias</div></div>
+     <div class="time-card"><div class="time-val" id="horas">00</div><div class="time-lbl">Horas</div></div>
+     <div class="time-card"><div class="time-val" id="mins">00</div><div class="time-lbl">Minutos</div></div>
+     <div class="time-card"><div class="time-val" id="secs">00</div><div class="time-lbl">Segundos</div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- NOVIDADE 1: Raspadinha do Amor -->
+<section>
+ <div class="container">
+  <h2 class="section-title">Raspadinha do Nosso Amor 🔍</h2>
+  <p class="subtitle">Passe o dedo ou o mouse por cima da raspadinha para revelar o segredo guardado!</p>
+  <div class="scratch-container">
+    <div class="scratch-secret">
+      <h4>Você é o Meu Presente! 🎁</h4>
+      <p>Nenhum presente no mundo chega perto do privilégio de ter você como minha namorada. Te amo demais! ❤️</p>
+    </div>
+    <canvas id="scratchCanvas"></canvas>
+  </div>
+ </div>
+</section>
+
+<!-- NOVIDADE 2: Sorteador de Próximos Encontros -->
+<section>
+ <div class="container">
+  <h2 class="section-title">Caixinha dos Próximos Encontros 🎲</h2>
+  <p class="subtitle">O que vamos fazer no nosso próximo encontro? Clique no botão para sortear!</p>
+  <div class="glass roulette-box">
+    <div class="roulette-card" id="rouletteResult">❓ Clique no botão abaixo para sortear...</div>
+    <button class="btn-main" onclick="spinRoulette()">Sortear Nosso Encontro! 💖</button>
+  </div>
+ </div>
+</section>
+
+<!-- Razões pelas quais te amo -->
+<section>
+ <div class="container">
+  <h2 class="section-title">Por que você é tão especial?</h2>
+  <p class="subtitle">Trinta dias foram suficientes para me dar a certeza absoluta sobre nós dois.</p>
+  <div class="cards">
+   <div class="glass card" onmouseenter="playPop()">
+    <div class="icon-box">👑</div>
+    <h3>O Seu Sorriso</h3>
+    <p>O seu sorriso ilumina qualquer dia cinzento. É impossível olhar para você e não me apaixonar de novo.</p>
+   </div>
+   <div class="glass card" onmouseenter="playPop()">
+    <div class="icon-box">🌷</div>
+    <h3>Seu Carinho Doce</h3>
+    <p>A forma carinhosa como você cuida de mim, suas brincadeiras e a paz incomparável que você me transmite.</p>
+   </div>
+   <div class="glass card" onmouseenter="playPop()">
+    <div class="icon-box">💍</div>
+    <h3>Nossa Sintonia</h3>
+    <p>Como a gente se entende no olhar. Ficar com você é fácil, leve e é a melhor parte do meu dia.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- Linha do Tempo -->
+<section>
+ <div class="container">
+  <h2 class="section-title">Nossa História</h2>
+  <p class="subtitle">Algumas datas dividem a vida em antes e depois.</p>
+  <div class="timeline">
+   <div class="event">
+    <span class="dot"></span>
+    <small>28 DE SETEMBRO DE 2026</small>
+    <h3>O Começo do Nosso Namoro ❤️</h3>
+    <p>O dia em que officially prometemos cuidar um do outro. O início do melhor capítulo da minha vida.</p>
+   </div>
+   <div class="event">
+    <span class="dot"></span>
+    <small>PRIMEIRAS SEMANAS</small>
+    <h3>Memórias Incríveis</h3>
+    <p>Muitas risadas, conversas compridas, cafunés, saudades no meio do dia e a certeza de que nascemos um pro outro.</p>
+   </div>
+   <div class="event">
+    <span class="dot"></span>
+    <small>28 DE OUTUBRO DE 2026</small>
+    <h3>Nosso 1º Mês Completo 🎉</h3>
+    <p>Comemorando 30 dias de muito amor, parceria, abraços apertados e beijos.</p>
+   </div>
+   <div class="event">
+    <span class="dot"></span>
+    <small>O FUTURO</small>
+    <h3>Para Sempre...</h3>
+    <p>Isso é só o começo de uma história linda que vamos escrever juntas por muitos e muitos anos.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- Galeria Polaroid 3D -->
+<section>
+ <div class="container">
+  <h2 class="section-title">Nossas Fotos & Lembranças 📸</h2>
+  <p class="subtitle">Clique nas polaroids para ver as memórias em destaque.</p>
+  <div class="gallery-grid">
+   <div class="polaroid" onclick="playChime(); showPhoto('Nosso primeiro olhar inesquecível ❤️', 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80')">
+    <div class="polaroid-img">
+      <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Foto 1">
+    </div>
+    <div class="polaroid-caption">O começo de tudo ✨</div>
+   </div>
+   <div class="polaroid" onclick="playChime(); showPhoto('Você fica perfeita em todas as fotos 🌹', 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80')">
+    <div class="polaroid-img">
+      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Foto 2">
+    </div>
+    <div class="polaroid-caption">Minha pessoa favorita 💖</div>
+   </div>
+   <div class="polaroid" onclick="playChime(); showPhoto('Amo estar ao seu lado! 💍', 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80')">
+    <div class="polaroid-img">
+      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Foto 3">
+    </div>
+    <div class="polaroid-caption">Momentos mágicos 🌟</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- Carta de Amor com Envelope Desdobrável -->
+<section>
+ <div class="container envelope-box">
+  <h2 class="section-title">Uma Carta do Seu Namorado 💌</h2>
+  <p class="subtitle">Clique no envelope abaixo para ler a mensagem especial que escrevi pra você.</p>
+
+  <div class="envelope" id="envelope" onclick="openEnvelope()">
+    <div class="envelope-icon">✉️</div>
+    <div style="color:#ffb8d1;font-weight:600;letter-spacing:2px;font-size:13px;text-transform:uppercase;">Toque para Abrir a Carta</div>
+  </div>
+
+  <div class="glass letter-content" id="letterContent">
+   <div style="font-size:35px;margin-bottom:10px">💖</div>
+   <h3 style="font-family:'DM Serif Display';font-size:28px;margin-bottom:18px;color:#fff">Minha Princesa,</h3>
+   <p>Faz exatamente um mês que eu disse 'sim' para a melhor história da minha vida. Nesses 30 dias, você se tornou o meu porto seguro, meu motivo de sorrir do nada olhando pro celular e minha melhor companhia.</p>
+   <p>Eu amo seu jeito, suas brincadeiras, seu carinho e a forma leve com que você faz qualquer dia ruim virar um dia incrível. Obrigado por me escolher e por me deixar te fazer feliz.</p>
+   <p>Que este seja apenas o 1º mês de centenas que ainda vamos comemorar lado a lado. Eu te amo demais! ❤️</p>
+  </div>
+ </div>
+</section>
+
+<!-- Surpresa Final com Explosão de Fogos e Corações -->
+<section>
+ <div class="container">
+  <div class="glass" style="padding:60px 25px;text-align:center">
+   <div class="badge">Surpresa Final</div>
+   <h2 class="section-title">Pronta para o Seu Presente Virtual?</h2>
+   <p class="subtitle">Aperte o botão abaixo para ativar a celebração de 1 mês!</p>
+   <button class="btn-main" style="padding:18px 42px;font-size:16px" onclick="triggerGrandSurprise()">Aperte Aqui, Meu Amor! 🎆💋</button>
+   <div id="finalMessage" style="margin-top:30px;min-height:80px;font-family:'DM Serif Display';font-size:clamp(20px, 4.5vw, 30px);color:#ffc0d3;line-height:1.4"></div>
+  </div>
+ </div>
+</section>
+
+<!-- Configuração Opcional da Música de Fundo -->
+<section style="padding:30px 20px">
+ <div class="container" style="text-align:center">
+  <div class="music-config-box">
+    <div style="font-size:12px;color:#a99da3;margin-bottom:8px">💡 Quer usar o link da 'Nossa Música'? Cole a URL abaixo:</div>
+    <input type="text" id="customMusicUrl" placeholder="Cole o link .mp3 aqui...">
+    <button onclick="applyCustomMusic()" style="background:#e75c86;border:0;color:#fff;padding:8px 16px;border-radius:50px;font-size:12px;cursor:pointer;margin-left:5px">Salvar</button>
+  </div>
+ </div>
+</section>
+
+<footer>
+ Criado com todo o amor do mundo pelo seu namorado. ❤️<br><br>
+ 28.09.2026 — 28.10.2026 • Nosso Primeiro Mês Inesquecível.
+</footer>
+
+<script>
+// ==========================================
+// 1. SINTETIZADOR DE EFEITOS SONOROS (WEB AUDIO API)
+// ==========================================
+let audioCtx = null;
+let soundMuted = false;
+
+function getAudioContext(){
+  if(!audioCtx){
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if(audioCtx.state === 'suspended'){
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+function toggleMute(){
+  soundMuted = !soundMuted;
+  const btn = document.getElementById("muteBtn");
+  btn.innerHTML = soundMuted ? '🔇 Som: OFF' : '🔊 Som: ON';
+  const bg = document.getElementById("bgAudio");
+  bg.muted = soundMuted;
+}
+
+// Som de Sino/Chime Doce
+function playChime(){
+  if(soundMuted) return;
+  try{
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, ctx.currentTime); // Nota A5
+    osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.3); // A6
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.5);
+  }catch(e){}
+}
+
+// Som de Pop Fofo
+function playPop(){
+  if(soundMuted) return;
+  try{
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(400, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.08);
+  }catch(e){}
+}
+
+// Som de Raspagem / Papel
+function playScratchSound(){
+  if(soundMuted) return;
+  try{
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(120 + Math.random()*200, ctx.currentTime);
+    gain.gain.setValueAtTime(0.03, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.05);
+  }catch(e){}
+}
+
+// Fanfarra / Celebração Mágica
+function playCelebrationSound(){
+  if(soundMuted) return;
+  const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+  notes.forEach((freq, idx) => {
+    setTimeout(() => {
+      try{
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.18, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.4);
+      }catch(e){}
+    }, idx * 100);
+  });
+}
+
+// ==========================================
+// 2. PLAYER DE MÚSICA DE FUNDO
+// ==========================================
+let isMusicPlaying = false;
+function toggleMusic(){
+  const audio = document.getElementById("bgAudio");
+  const btn = document.getElementById("musicBtn");
+  getAudioContext();
+  
+  if(isMusicPlaying){
+    audio.pause();
+    btn.innerHTML = '🎵 Música';
+  } else {
+    audio.play().catch(()=>{});
+    btn.innerHTML = '⏸️ Pausar';
+  }
+  isMusicPlaying = !isMusicPlaying;
+}
+
+function applyCustomMusic(){
+  const url = document.getElementById("customMusicUrl").value.trim();
+  if(!url) return;
+  const audio = document.getElementById("bgAudio");
+  audio.src = url;
+  audio.play().then(() => {
+    isMusicPlaying = true;
+    document.getElementById("musicBtn").innerHTML = '⏸️ Pausar';
+    playChime();
+  }).catch(() => {
+    alert("Não foi possível carregar o áudio desse link. Verifique se o link é direto para um arquivo .mp3");
+  });
+}
+
+// ==========================================
+// 3. CONTADOR EM TEMPO REAL
+// ==========================================
+const startDate = new Date("2026-09-28T00:00:00");
+function updateTimer(){
+ const now = new Date();
+ let diff = Math.max(0, now - startDate);
+ const totalSecs = Math.floor(diff / 1000);
+ 
+ const d = Math.floor(totalSecs / 86400);
+ const h = Math.floor((totalSecs % 86400) / 3600);
+ const m = Math.floor((totalSecs % 3600) / 60);
+ const s = totalSecs % 60;
+ 
+ document.getElementById("dias").textContent = d;
+ document.getElementById("horas").textContent = String(h).padStart(2, '0');
+ document.getElementById("mins").textContent = String(m).padStart(2, '0');
+ document.getElementById("secs").textContent = String(s).padStart(2, '0');
+}
+setInterval(updateTimer, 1000);
+updateTimer();
+
+// ==========================================
+// 4. RASPADINHA INTERATIVA DO AMOR
+// ==========================================
+const scratchCanvas = document.getElementById("scratchCanvas");
+const sCtx = scratchCanvas.getContext("2d");
+let isScratching = false;
+
+function initScratch(){
+  scratchCanvas.width = scratchCanvas.parentElement.offsetWidth;
+  scratchCanvas.height = scratchCanvas.parentElement.offsetHeight;
+  
+  sCtx.fillStyle = "#8a1b41";
+  sCtx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+  
+  // Texto instrutivo na camada superior
+  sCtx.fillStyle = "#ffb8d1";
+  sCtx.font = "bold 16px Montserrat, sans-serif";
+  sCtx.textAlign = "center";
+  sCtx.fillText("✨ Raspe aqui com o dedo ou mouse ✨", scratchCanvas.width/2, scratchCanvas.height/2);
+}
+window.addEventListener('load', initScratch);
+
+function scratch(e){
+  if(!isScratching) return;
+  const rect = scratchCanvas.getBoundingClientRect();
+  const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+  const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+  
+  sCtx.globalCompositeOperation = 'destination-out';
+  sCtx.beginPath();
+  sCtx.arc(x, y, 22, 0, Math.PI * 2);
+  sCtx.fill();
+  playScratchSound();
+}
+
+scratchCanvas.addEventListener('mousedown', () => isScratching = true);
+scratchCanvas.addEventListener('mouseup', () => isScratching = false);
+scratchCanvas.addEventListener('mousemove', scratch);
+
+scratchCanvas.addEventListener('touchstart', () => isScratching = true);
+scratchCanvas.addEventListener('touchend', () => isScratching = false);
+scratchCanvas.addEventListener('touchmove', scratch);
+
+// ==========================================
+// 5. SORTEADOR DE PRÓXIMOS ENCONTROS
+// ==========================================
+const datesList = [
+  "🍝 Jantar especial feito por mim à luz de velas",
+  "🍿 Maratona de filmes com pipoca e cafuné",
+  "🧺 Picnic romântico no parque no fim de tarde",
+  "🍦 Saída surpresa para tomar sorvete e passear de mãos dadas",
+  "🚗 Viagem surpresa no fim de semana para um lugar lindo",
+  "🍕 Noite da pizza com jogos e muitas risadas"
+];
+
+function spinRoulette(){
+  playChime();
+  const card = document.getElementById("rouletteResult");
+  let count = 0;
+  const interval = setInterval(() => {
+    card.textContent = datesList[Math.floor(Math.random() * datesList.length)];
+    count++;
+    playPop();
+    if(count > 12){
+      clearInterval(interval);
+      playCelebrationSound();
+      triggerConfetti();
+    }
+  }, 100);
+}
+
+// ==========================================
+// 6. ENVELOPE & CARTA DE AMOR
+// ==========================================
+function openEnvelope(){
+  playChime();
+  const envelope = document.getElementById("envelope");
+  const letter = document.getElementById("letterContent");
+  envelope.style.display = "none";
+  letter.style.display = "block";
+  playCelebrationSound();
+}
+
+function showPhoto(text, url){
+  alert(text);
+}
+
+// ==========================================
+// 7. SURPRESA FINAL & FOGOS DE ARTIFÍCIO (CANVAS)
+// ==========================================
+let surpriseDone = false;
+function triggerGrandSurprise(){
+  playCelebrationSound();
+  triggerConfetti();
+  
+  const msgBox = document.getElementById("finalMessage");
+  const text = "Eu amo tudo em você! Obrigado por esse 1º mês maravilhoso do meu lado, minha princesa. Que seja o primeiro de uma vida inteira juntinhos! ❤️💋✨";
+  
+  if(!surpriseDone){
+    surpriseDone = true;
+    msgBox.textContent = "";
+    let i = 0;
+    const t = setInterval(() => {
+      msgBox.textContent += text[i++] || "";
+      if(i >= text.length) clearInterval(t);
+    }, 35);
+  }
+}
+
+// Sistema de Confetes e Fogos
+const confettiCanvas = document.getElementById("canvas-confetti");
+const cCtx = confettiCanvas.getContext("2d");
+let confettiParticles = [];
+
+function resizeConfetti(){
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeConfetti);
+resizeConfetti();
+
+function triggerConfetti(){
+  for(let i=0; i<80; i++){
+    confettiParticles.push({
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+      vx: (Math.random() - 0.5) * 16,
+      vy: (Math.random() - 0.5) * 16 - 3,
+      size: Math.random() * 8 + 4,
+      color: ["#ff6f99", "#ffb5cb", "#e75c86", "#ffffff", "#ffd700"][Math.floor(Math.random() * 5)],
+      life: 100
+    });
+  }
+}
+
+function drawConfetti(){
+  cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+  confettiParticles.forEach((p, idx) => {
+    cCtx.fillStyle = p.color;
+    cCtx.beginPath();
+    cCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    cCtx.fill();
+    
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.15; // gravidade
+    p.life--;
+    
+    if(p.life <= 0) confettiParticles.splice(idx, 1);
+  });
+  requestAnimationFrame(drawConfetti);
+}
+drawConfetti();
+
+// Canvas de Partículas Suaves de Fundo
+const particleCanvas = document.getElementById('canvas-particles');
+const pCtx = particleCanvas.getContext('2d');
+let bgParticles = [];
+
+function resizeBg(){
+  particleCanvas.width = window.innerWidth;
+  particleCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeBg);
+resizeBg();
+
+for(let i=0; i<50; i++){
+  bgParticles.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 2 + 1,
+    speed: Math.random() * 0.8 + 0.2
+  });
+}
+
+function drawBgParticles(){
+  pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+  pCtx.fillStyle = "rgba(255, 184, 209, 0.4)";
+  bgParticles.forEach(p => {
+    pCtx.beginPath();
+    pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    pCtx.fill();
+    p.y -= p.speed;
+    if(p.y < 0){
+      p.y = particleCanvas.height;
+      p.x = Math.random() * particleCanvas.width;
+    }
+  });
+  requestAnimationFrame(drawBgParticles);
+}
+drawBgParticles();
+</script>
+</body>
+</html>
